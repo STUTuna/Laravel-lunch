@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('show');
 // });
 
-Route::get('/','HomeController@show');
+Route::get('/','StoreController@index');
 
-Route::get('/test', 'HomeController@test');
+Route::get('/store', 'StoreController@index');
+
+Route::get('/store/create', 'StoreController@createStore');

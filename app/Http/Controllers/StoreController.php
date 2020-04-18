@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Store;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -15,6 +16,8 @@ class StoreController extends Controller
     public function index()
     {
         //
+
+        return View('store');
     }
 
     /**
@@ -22,9 +25,17 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createStore()
     {
         //
+        $result = Store::create([
+            'store_name' => 'TEST_name',
+            'store_tel' => 'TEST_tel',
+            'store_remark' => 'TEST_remark'
+        ])->save();//用save是為了取得是否成功執行
+
+        return $result;
+
     }
 
     /**

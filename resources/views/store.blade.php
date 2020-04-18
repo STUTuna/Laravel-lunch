@@ -6,8 +6,8 @@
 <form>
     <div class="form-group">
         <label for="店家名稱">店家名稱</label>
-        <input type="text"" class=" form-control" id="店家名稱" aria-describedby="emailHelp" placeholder="請輸入店家名稱">
-        <small id="emailHelp" class="form-text text-muted">一些說明之類的咚咚</small>
+        <input type="text" class=" form-control" id="店家名稱" placeholder="請輸入店家名稱">
+        <small class="form-text text-muted">一些說明之類的咚咚</small>
     </div>
     <div class="form-group">
         <label for="店家電話">店家電話</label>
@@ -46,5 +46,26 @@
         </tr>
     </tbody>
 </table>
+<script>
+    $(document).ready(function(){
+        let 店家名稱 = $('#店家名稱').val();
+        let 店家電話 = $('#店家電話').val();
 
+        console.log(店家名稱);
+        console.log(店家電話);
+        $.ajax({
+            type:'POST',
+            url:'/store/create',
+            data:{
+                '店家名稱':店家名稱,
+                '店家電話':店家電話
+            },
+            success:function(data){
+                if(data && data == 1){
+                    console.log('成功');
+                }
+            }
+        });
+    });
+</script>
 @endsection

@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function test()
     {
         // $users = DB::table('users')::;
-        return $users = DB::table('users')->get();
+        // return $users = DB::table('users')->get();
 
     }
 }
