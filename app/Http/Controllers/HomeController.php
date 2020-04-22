@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Egulias\EmailValidator\Exception\UnclosedComment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    //
-    public function show()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-
-        return View('home');
+        $this->middleware('auth');
     }
 
-    public function test()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
-        // $users = DB::table('users')::;
-        // return $users = DB::table('users')->get();
-
+        return view('home');
     }
 }

@@ -29,9 +29,10 @@ class StoreController extends Controller
     {
         //
         $result = Store::create([
-            'store_name' => 'TEST_name',
-            'store_tel' => 'TEST_tel',
-            'store_remark' => 'TEST_remark'
+            'store_name' => $_POST['store_name'],
+            'store_tel' => $_POST['store_tel']
+            // 'store_name' => $_POST['store_name'],
+            // 'store_tel' => $_POST['store_tel']
         ])->save();//用save是為了取得是否成功執行
 
         return $result;
