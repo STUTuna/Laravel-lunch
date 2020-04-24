@@ -6,6 +6,7 @@ use App\Store;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
+
 class StoreController extends Controller
 {
     /**
@@ -16,8 +17,10 @@ class StoreController extends Controller
     public function index()
     {
         //
+        $stores = Store::all();
 
-        return View('store');
+        // return View('store')->with('stores',$stores);
+        return view('store', ['stores' => $stores]);
     }
 
     /**
@@ -30,15 +33,19 @@ class StoreController extends Controller
         //
         $result = Store::create([
             'store_name' => $_POST['store_name'],
-            'store_tel' => $_POST['store_tel']
-            // 'store_name' => $_POST['store_name'],
-            // 'store_tel' => $_POST['store_tel']
-        ])->save();//用save是為了取得是否成功執行
+            'store_tel' => $_POST['store_tel'],
+            'store_remark' => $_POST['store_remark']
+        ])->save(); //用save是為了取得是否成功執行
 
         return $result;
-
     }
 
+    public function deleteStore(){
+        $store = Store::find($_POST['store_id']);
+
+        $result = $store->delete();
+        return $result;
+    }
     /**
      * Store a newly created resource in storage.
      *
